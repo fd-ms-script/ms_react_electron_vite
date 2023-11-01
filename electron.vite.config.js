@@ -5,6 +5,12 @@ import react from "@vitejs/plugin-react"
 export default defineConfig({
   main: {
     plugins: [externalizeDepsPlugin()],
+    resolve: {
+      alias: {
+        "@main": resolve("src/main"),
+      },
+      extensions: [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"], // 导入时想要省略的扩展名列表
+    },
   },
   preload: {
     plugins: [externalizeDepsPlugin()],
