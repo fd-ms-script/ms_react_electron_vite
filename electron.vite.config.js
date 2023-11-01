@@ -2,6 +2,8 @@ import { resolve } from "path"
 import { defineConfig, externalizeDepsPlugin } from "electron-vite"
 import react from "@vitejs/plugin-react"
 
+const extensions = [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"]
+
 export default defineConfig({
   main: {
     plugins: [externalizeDepsPlugin()],
@@ -10,7 +12,7 @@ export default defineConfig({
         "@main": resolve("src/main"),
         "@root": resolve("./"),
       },
-      extensions: [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"], // 导入时想要省略的扩展名列表
+      extensions, // 导入时想要省略的扩展名列表
     },
   },
   preload: {
@@ -21,9 +23,8 @@ export default defineConfig({
     resolve: {
       alias: {
         "@renderer": resolve("src/renderer/src"),
-        "@main": resolve("src/main"),
       },
-      extensions: [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"], // 导入时想要省略的扩展名列表
+      extensions, // 导入时想要省略的扩展名列表
     },
     build: {
       sourcemap: true, // 构建后是否生成 source map 文件。如果为 true，将会创建一个独立的 source map 文件。
