@@ -8,6 +8,7 @@ export default defineConfig({
     resolve: {
       alias: {
         "@main": resolve("src/main"),
+        "@root": resolve("./"),
       },
       extensions: [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx", ".json"], // 导入时想要省略的扩展名列表
     },
